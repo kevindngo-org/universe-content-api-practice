@@ -10,7 +10,15 @@ npm test
 | Endpoint | Returns |
 | --- | --- |
 | `GET /health` | `{ "ok": true }` |
-| `GET /api/highlights` | `{ event, count, highlights: [{ id, topic, title, summary, tryIt }] }` |
+| `GET /api/highlights` | `{ event, count, highlights: [{ id, topic, title, summary, tryIt }] }`; optional `?topic=<topic>` filters by topic name, case-insensitively |
 | `GET /api/highlights/:id` | One highlight, or `404` |
+| `GET /api/topics` | `{ topics: [{ name, slug, count }] }` in first-seen data order |
 
-Topic filtering is not built yet; see the open issues. Demo run of show and reset instructions: [demo/DEMO.md](demo/DEMO.md).
+Example requests:
+
+```sh
+curl 'http://localhost:3001/api/highlights?topic=agentic%20software%20development'
+curl http://localhost:3001/api/topics
+```
+
+Demo run of show and reset instructions: [demo/DEMO.md](demo/DEMO.md).
